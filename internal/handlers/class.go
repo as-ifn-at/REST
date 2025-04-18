@@ -6,7 +6,6 @@ import (
 
 	"github.com/as-ifn-at/glofox/common"
 	"github.com/as-ifn-at/glofox/internal/config"
-	"github.com/as-ifn-at/glofox/internal/db"
 	"github.com/as-ifn-at/glofox/models"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
@@ -18,14 +17,12 @@ type classHandler struct {
 	Handler
 	config config.Config
 	logger zerolog.Logger
-	db     *db.DbHandler
 }
 
-func NewClassHandler(config config.Config, logger zerolog.Logger, db *db.DbHandler) Handler {
+func NewClassHandler(config config.Config, logger zerolog.Logger) Handler {
 	return &classHandler{
 		config: config,
 		logger: logger,
-		db:     db,
 	}
 }
 

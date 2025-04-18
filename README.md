@@ -11,8 +11,8 @@ curl --location 'localhost:8080/classes/v1/create' \
 --header 'Content-Type: application/json' \
 --data '{
     "class_name":"Pilates",
-    "start_date":"01-12-2024",
-    "end_date":"20-12-2024",
+    "start_date":"01-12-2025",
+    "end_date":"20-12-2025",
     "capacity": 20
 }'
 

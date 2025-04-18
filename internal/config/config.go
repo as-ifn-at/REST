@@ -15,7 +15,7 @@ const (
 )
 
 var (
-	DefaultDbName = "badgerdb"
+	DefaultDbName = "hashmap"
 	DefaultPort   = "8080"
 	DefaultDBPath = "data"
 )

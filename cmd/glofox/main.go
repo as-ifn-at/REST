@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/as-ifn-at/glofox/internal/config"
-	"github.com/as-ifn-at/glofox/internal/db"
 	"github.com/as-ifn-at/glofox/internal/routes"
 	"github.com/rs/zerolog"
 )
@@ -17,11 +16,8 @@ func main() {
 	logger = logger.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 
 	config := config.Load()
-	dbHandler := db.NewDbHandler(config)
-
-	router := routes.NewRouter(config, logger, dbHandler).SetRouters()
+	router := routes.NewRouter(config, logger).SetRouters()
 	listenPort := fmt.Sprintf(":%v", config.Port)
-
 	httpServer := &http.Server{
 		Addr:    listenPort,
 		Handler: router,
