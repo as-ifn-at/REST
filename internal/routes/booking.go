@@ -6,7 +6,7 @@ import (
 
 func (r *router) attendClassesRoutes() {
 
-	bookingHandler := handlers.NewBookingHandler(r.appConfig)
+	bookingHandler := handlers.NewBookingHandler(r.appConfig, r.logger, r.db)
 	routerG := r.router.Group("/bookings/v1")
 	routerG.POST("/book", bookingHandler.Save)
 	routerG.GET("/:id", bookingHandler.Get)

@@ -4,21 +4,25 @@ import (
 	"net/http"
 
 	"github.com/as-ifn-at/glofox/internal/config"
+	"github.com/as-ifn-at/glofox/internal/db"
 	"github.com/as-ifn-at/glofox/internal/middlewares"
 	"github.com/gin-gonic/gin"
+	"github.com/rs/zerolog"
 )
 
 type router struct {
 	router    *gin.Engine
 	appConfig config.Config
-	// logger
-	// db
+	logger    zerolog.Logger
+	db        *db.DbHandler
 }
 
-func NewRouter(config *config.Config) *router {
+func NewRouter(config *config.Config, logger zerolog.Logger, db *db.DbHandler) *router {
 	return &router{
+		logger:    logger,
 		router:    gin.Default(),
 		appConfig: *config,
+		db:        db,
 	}
 }
 

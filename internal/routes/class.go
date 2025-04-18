@@ -6,7 +6,7 @@ import (
 
 func (r *router) classesRoutes() {
 
-	classHandler := handlers.NewClassHandler(r.appConfig)
+	classHandler := handlers.NewClassHandler(r.appConfig, r.logger, r.db)
 	routerG := r.router.Group("/classes/v1")
 	routerG.POST("/create", classHandler.Save)
 	routerG.GET("/:id", classHandler.Get)
