@@ -5,9 +5,9 @@
 > source configuration/env.sh && go run cmd/glofox/main.go 
 
 
-### create classes
+### Create classes
 
-curl --location 'localhost:8080/classes/v1/create' \
+>curl --location 'localhost:8080/classes/v1/create' \
 --header 'Content-Type: application/json' \
 --data '{
     "class_name":"Pilates",
@@ -17,11 +17,11 @@ curl --location 'localhost:8080/classes/v1/create' \
 }'
 
 ### Query class
-curl --location 'localhost:8080/classes/v1/Pilates'
+>curl --location 'localhost:8080/classes/v1/Pilates'
 
 ### Do class booking
 
-curl --location 'localhost:8080/bookings/v1/book' \
+>curl --location 'localhost:8080/bookings/v1/book' \
 --header 'Content-Type: application/json' \
 --data '{
     "name":"Asif",
@@ -31,4 +31,4 @@ curl --location 'localhost:8080/bookings/v1/book' \
 
 ### Query booking
 
-curl --location 'localhost:8080/bookings/v1/Asif'
+>curl --location 'localhost:8080/bookings/v1/Asif'
