@@ -10,4 +10,5 @@ type Class struct {
 type ClassBooking struct {
 	MemberName string `json:"name"`
 	Date       string `json:"date"`
+	ClassName  string `json:"class_name"`
 }

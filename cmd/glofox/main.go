@@ -18,7 +18,6 @@ func main() {
 		Handler: router,
 	}
 
-	fmt.Println("listening on port: ", config.Port)
 	if err := httpServer.ListenAndServe(); err != nil {
 		panic(err)
 	}

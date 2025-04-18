@@ -3,12 +3,13 @@ package handlers
 import (
 	"net/http"
 
+	"github.com/as-ifn-at/glofox/common"
 	"github.com/as-ifn-at/glofox/internal/config"
 	"github.com/as-ifn-at/glofox/models"
 	"github.com/gin-gonic/gin"
 )
 
-var classesArr = []models.Class{}
+var Classes = make(map[string]models.Class, 0)
 
 type classHandler struct {
 	Handler
@@ -25,23 +26,25 @@ func NewClassHandler(config config.Config) *classHandler {
 
 func (h *classHandler) Get(ctx *gin.Context) {
 	id := ctx.Param("id")
-
-	for _, class := range classesArr {
-		if class.ClassName == id {
-			ctx.IndentedJSON(http.StatusOK, class)
-			return
-		}
+	if _, ok := Classes[id]; !ok {
+		ctx.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+		return
 	}
-	ctx.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+
+	ctx.IndentedJSON(http.StatusOK, Classes[id])
 }
 
 func (h *classHandler) Save(ctx *gin.Context) {
 	var newClass models.Class
 	if err := ctx.BindJSON(&newClass); err != nil {
-		ctx.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		ctx.IndentedJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	classesArr = append(classesArr, newClass)
+	if err := common.CheckValidStartEndDate(newClass.StartDate, newClass.EndDate); err != nil {
+		ctx.IndentedJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	Classes[newClass.ClassName] = newClass
 
-	ctx.IndentedJSON(http.StatusCreated, newClass)
+	ctx.IndentedJSON(http.StatusCreated, gin.H{"class created": newClass})
 }

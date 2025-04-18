@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/as-ifn-at/glofox/internal/config"
+	"github.com/as-ifn-at/glofox/internal/middlewares"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,8 +23,14 @@ func NewRouter(config *config.Config) *router {
 }
 
 func (r *router) SetRouters() http.Handler {
+	attachMiddleWares(r.router)
 	r.classesRoutes()
 	r.attendClassesRoutes()
 
 	return r.router.Handler()
+}
+
+func attachMiddleWares(router *gin.Engine) {
+	router.Use(gin.Recovery())
+	router.Use(middlewares.RateLimit())
 }
