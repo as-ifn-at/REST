@@ -15,7 +15,9 @@ func RateLimit() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		if !limiter.Allow() {
 			ctx.AbortWithStatusJSON(http.StatusTooManyRequests, gin.H{"message": "too many requests"})
+			return
 		}
+		ctx.Next()
 	}
 }
 

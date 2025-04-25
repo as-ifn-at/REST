@@ -12,7 +12,7 @@ import (
 	"github.com/rs/zerolog"
 )
 
-var bokingsArr = []models.ClassBooking{}
+var bookingsArr = []models.ClassBooking{}
 
 type bookingHandler struct {
 	Handler
@@ -29,7 +29,7 @@ func NewBookingHandler(config config.Config, logger zerolog.Logger) Handler {
 
 func (h *bookingHandler) Get(ctx *gin.Context) {
 	id := ctx.Param("id")
-	for _, class := range bokingsArr {
+	for _, class := range bookingsArr {
 		if class.MemberName == id {
 			ctx.IndentedJSON(http.StatusOK, class)
 			return
@@ -61,7 +61,7 @@ func (h *bookingHandler) Save(ctx *gin.Context) {
 		ctx.IndentedJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	bokingsArr = append(bokingsArr, newClassBooking)
+	bookingsArr = append(bookingsArr, newClassBooking)
 	h.logger.Info().Msg(fmt.Sprintf("successfully saved booking data for member: %v for class: %v",
 		newClassBooking.MemberName, classDetails.ClassName))
 
