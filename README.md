@@ -1,7 +1,7 @@
 # Glofox
 
 ### To run the application
-> source configuration/env.sh && go run cmd/glofox/main.go 
+> source configuration/env.sh && go run cmd/rest/main.go 
 ***
 
 
