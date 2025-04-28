@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/as-ifn-at/glofox/common"
-	"github.com/as-ifn-at/glofox/internal/config"
+	"github.com/as-ifn-at/REST/common"
+	"github.com/as-ifn-at/REST/internal/config"
 
-	"github.com/as-ifn-at/glofox/models"
+	"github.com/as-ifn-at/REST/models"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
 )

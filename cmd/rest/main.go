@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/as-ifn-at/glofox/internal/config"
-	"github.com/as-ifn-at/glofox/internal/routes"
+	"github.com/as-ifn-at/REST/internal/config"
+	"github.com/as-ifn-at/REST/internal/routes"
 	"github.com/rs/zerolog"
 )
 

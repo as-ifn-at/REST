@@ -1,4 +1,4 @@
-module github.com/as-ifn-at/glofox
+module github.com/as-ifn-at/REST
 
 go 1.24.2
 

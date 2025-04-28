@@ -3,8 +3,8 @@ package routes
 import (
 	"net/http"
 
-	"github.com/as-ifn-at/glofox/internal/config"
-	"github.com/as-ifn-at/glofox/internal/middlewares"
+	"github.com/as-ifn-at/REST/internal/config"
+	"github.com/as-ifn-at/REST/internal/middlewares"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
 )

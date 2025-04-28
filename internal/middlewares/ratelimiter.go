@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/as-ifn-at/glofox/common"
+	"github.com/as-ifn-at/REST/common"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/time/rate"
 )

@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/as-ifn-at/glofox/internal/handlers"
+	"github.com/as-ifn-at/REST/internal/handlers"
 )
 
 func (r *router) attendClassesRoutes() {
