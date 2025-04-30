@@ -22,17 +22,16 @@ func TestHandlers(t *testing.T) {
 	RunSpecs(t, "Handlers Suite")
 }
 
-var logger zerolog.Logger
-var r *gin.Engine
-var testClassHandler Handler
-var testBookHandler Handler
-
 var _ = Describe("class test cases", func() {
+	var (
+		logger zerolog.Logger
+		r      *gin.Engine
+	)
 	BeforeEach(func() {
 		logger = zerolog.New(os.Stdout).With().Timestamp().Logger()
 		logger = logger.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 		r = gin.Default()
-		testClassHandler = NewClassHandler(config.Config{}, logger)
+		testClassHandler := NewClassHandler(config.Config{}, logger)
 		routerG := r.Group("/classes/v1")
 		routerG.POST("/create", testClassHandler.Save)
 		routerG.GET("/:id", testClassHandler.Get)
@@ -126,6 +125,11 @@ var _ = Describe("class test cases", func() {
 })
 
 var _ = Describe("booking test cases", func() {
+	var (
+		logger zerolog.Logger
+		r      *gin.Engine
+	)
+
 	BeforeEach(func() {
 		Classes["Pilates"] = models.Class{
 			ClassName: "Pilates",

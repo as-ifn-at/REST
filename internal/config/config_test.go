@@ -27,7 +27,7 @@ var _ = Describe("config test cases", func() {
 		})
 	})
 
-	When("envs are passes", func() {
+	When("envs are passed", func() {
 		It("will take values from envs", func() {
 			os.Setenv(PORT, "8080")
 			os.Setenv(DBPATH, "testpath")
